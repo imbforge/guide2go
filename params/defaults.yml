@@ -1,0 +1,12 @@
+CHROM:
+  "chr1"
+START:
+  101260000
+END:
+  101300000
+OUT:
+  "${projectDir}/results"
+WINDOW_SIZE:
+  40000
+TARGET_SIZE:
+  20
