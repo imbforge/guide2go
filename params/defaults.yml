@@ -1,11 +1,13 @@
+OUT:
+  "${projectDir}/results"
 CHROM:
   "chr1"
 START:
   101260000
 END:
-  101300000
-OUT:
-  "${projectDir}/results"
+  121260000
+ALLELES:
+  false # supply a vcf or bed file here to filter for allelic targets
 WINDOW_SIZE:
   40000
 TARGET_SIZE:
