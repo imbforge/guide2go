@@ -30,6 +30,6 @@ process CHOPCHOP {
             -scoringMethod ALL \\
             -R 4 \\
             -g 20 \\
-            -o ${region} > results.tsv
+            -o ${region} | cut -f 2- > results.tsv
         """
 }
