@@ -19,7 +19,7 @@ process BEDTOOLS_MAKEWINDOWS {
 }
 
 process BEDTOOLS_INTERSECT {
-    tag "${snps}"
+    tag "${variants}"
 
     when:
         variants
@@ -30,18 +30,21 @@ process BEDTOOLS_INTERSECT {
         path(variants)
 
     output:
-        path("results_filtered.tsv"), emit: tsv
+        path("results.filtered.tsv"), emit: tsv
+        path("results.filtered.bed"), emit: bed
 
     script:
         """
-        awk '{ FS=OFS="\\t"; if(\$6 == "+") {print \$1,\$3-2,\$3,\$6,\$2,\$3} else {print \$1,\$2,\$2+2,\$6,\$2,\$3} }' ${bed} > pam.bed
+        awk '{ FS=OFS="\\t"; if(\$6 == "+") {print \$1,\$3-2,\$3,\$6,\$2,\$3} else {print \$1,\$2,\$2+2,\$6,\$2,\$3} }' ${bed} | sort -k1,1 -k2,2n > pam_coords.bed
 
         bedtools \\
             intersect \\
-                -a pam.bed \\
+                -wa \\
+                -wb \\
+                -a pam_coords.bed \\
                 -b ${variants} \\
-                > targets_filtered.bed
+                > results.filtered.bed
 
-        grep -f <(awk '{FS=OFS="\\t"; print \$5+1}' targets_filtered.bed) ${tsv} > results_filtered.tsv
+        grep -f <(awk '{FS=OFS="\\t"; print \$5+1}' results.filtered.bed) ${tsv} > results.filtered.tsv
         """
 }
