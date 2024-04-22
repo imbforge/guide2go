@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://gitlab.rlp.net/imbforge/guide2go/-/raw/main/nextflow_schema.json",
+    "title": "imbforge/guide2go pipeline parameters",
+    "description": "Configure pipeline parameters.",
+    "type": "object",
+    "definitions": {
+        "general_options": {
+            "title": "General options",
+            "type": "object",
+            "description": "Define pipeline options.",
+            "required": ["OUT", "ORGANISM", "TARGET_SIZE", "WINDOW_SIZE"],
+            "properties": {
+                "OUT": {
+                    "type": "string",
+                    "format": "path",
+                    "description": "Path to output directory where the results will be saved.",
+                    "default": "${projectDir}/results"
+                },
+                "ORGANISM": {
+                    "type": "string",
+                    "description": "Target organism specified as name of the reference assembly.",
+                    "enum": ["hg38", "mm10"],
+                    "default": "hg38"
+                },
+                "ALLELES": {
+                    "type": "string",
+                    "format": "path",
+                    "description": "Path to vcf or bed file containing allelic variants.",
+                    "help_text": "If provided, targets will be filtered for those that have a SNP within their PAM sequence."
+                },
+                "TARGET_SIZE": {
+                    "type": "integer",
+                    "format": "path",
+                    "description": "Length of target sgRNA w/o PAM.",
+                    "default": 20
+                },
+                "WINDOW_SIZE": {
+                    "type": "integer",
+                    "format": "path",
+                    "description": "Size of (sliding) genomic windows to query for CRISPR targets.",
+                    "help_text": "Windows will overlap by one target sgRNA length (step size = window size - target sgRNA w/ PAM)",
+                    "default": 40000,
+                    "maximum": 40000
+                }
+            }
+        },
+        "coordinate_options": {
+            "title": "Coordinate options",
+            "type": "object",
+            "description": "Define chromosomal coordinates to find CRISPR targets within.",
+            "required": ["CHROM", "START", "END"],
+            "properties": {
+                "CHROM": {
+                    "type": "string",
+                    "pattern": "^chr",
+                    "description": "Chromosome identifier for region to find CRISPR targets in."
+                },
+                "START": {
+                    "type": "integer",
+                    "description": "Start coordinate for region to find CRISPR targets in."
+                },
+                "END": {
+                    "type": "integer",
+                    "description": "End coordinate for region to find CRISPR targets in."
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/general_options"
+        },
+        {
+            "$ref": "#/definitions/coordinate_options"
+        }
+    ]
+}

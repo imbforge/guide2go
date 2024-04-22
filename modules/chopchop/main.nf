@@ -14,7 +14,7 @@ process CHOPCHOP {
         chopchop.py \\
             -T 1 \\
             -J \\
-            -G hg38 \\
+            -G ${params.ORGANISM} \\
             -BED \\
             -GenBank \\
             -Target ${region} \\

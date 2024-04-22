@@ -1,5 +1,7 @@
 OUT:
   "${projectDir}/results"
+ORGANISM:
+  "hg38"
 CHROM:
   "chr1"
 START:
