@@ -69,10 +69,10 @@
     },
     "allOf": [
         {
-            "$ref": "#/definitions/general_options"
+            "$ref": "#/defs/general_options"
         },
         {
-            "$ref": "#/definitions/coordinate_options"
+            "$ref": "#/defs/coordinate_options"
         }
     ]
 }
