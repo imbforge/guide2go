@@ -9,7 +9,7 @@ At the end, potential targets across all windows are merged and can (optionally)
 ## Usage
 
 ```bash
-nextflow imbforge/guide2go --CHROM <chromosome_identifier> --START <start_coordinate> --END <end_coordinate> --ORGANISM <hg38|mm10> --ALLELES <path/to/vcf|path/to/bed>
+nextflow run imbforge/guide2go --CHROM <chromosome_identifier> --START <start_coordinate> --END <end_coordinate> --ORGANISM <hg38|mm10> --ALLELES <path/to/vcf|path/to/bed>
 ```
 
 ## Overview
