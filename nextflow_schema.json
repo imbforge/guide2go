@@ -1,10 +1,10 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://gitlab.rlp.net/imbforge/guide2go/-/raw/main/nextflow_schema.json",
     "title": "imbforge/guide2go pipeline parameters",
     "description": "Configure pipeline parameters.",
     "type": "object",
-    "definitions": {
+    "defs": {
         "general_options": {
             "title": "General options",
             "type": "object",

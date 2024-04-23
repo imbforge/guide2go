@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-include { validateParameters; paramsHelp; paramsSummaryLog } from 'plugin/nf-validation'
+include { validateParameters; paramsHelp; paramsSummaryLog } from 'plugin/nf-schema'
 include { GUIDE2GO } from './workflows/guide2go'
 
 if (params.help) {
