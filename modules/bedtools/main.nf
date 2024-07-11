@@ -45,6 +45,6 @@ process BEDTOOLS_INTERSECT {
                 -b ${variants} \\
                 > results.filtered.bed
 
-        grep -f <(awk '{FS=OFS="\\t"; print \$5+1}' results.filtered.bed) ${tsv} > results.filtered.tsv
+        grep -f <(awk '{FS=OFS="\\t"; print \$5+1}' results.filtered.bed) ${tsv} > results.filtered.tsv || true
         """
 }
