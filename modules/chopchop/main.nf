@@ -27,7 +27,7 @@ process CHOPCHOP {
             -v 3 \\
             -BB AGGCTAGTCCGT \\
             -M NGG \\
-            -scoringMethod ALL \\
+            -scoringMethod ${params.SCORING_METHOD} \\
             -R 4 \\
             -g 20 \\
             -o ${region} | cut -f 2- > results.tsv

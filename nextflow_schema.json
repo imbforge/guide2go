@@ -42,6 +42,12 @@
                     "help_text": "Windows will overlap by one target sgRNA length (step size = window size - target sgRNA w/ PAM)",
                     "default": 40000,
                     "maximum": 40000
+                },
+                "SCORING_METHOD": {
+                    "type": "string",
+                    "description": "Algorithm for sgRNA efficiency scoring.",
+                    "enum": ["XU_2015", "DOENCH_2014", "DOENCH_2016", "MORENO_MATEOS_2015", "CHARI_2015", "G_20", "KIM_2018", "ALKAN_2018", "ZHANG_2019", "ALL"],
+                    "default": "DOENCH_2016"
                 }
             }
         },
